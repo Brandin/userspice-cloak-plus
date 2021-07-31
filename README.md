@@ -86,6 +86,44 @@ if (!$cloak['state']) {
 }
 ```
 
+#### Preventing Redirect Loops During Uncloaking
+
+In some instances, the URL you may have cloaked from could cause a redirect loop if you use URL parameters to trigger the cloaking. For example, if you cloak from https://example.com/user/bobsmith/cloak/, it will cause a redirect loop. If you still want to redirect them back to a URL other than the homepage however, you can do this by setting the `REQUEST_URI` to something else. In the above URL, we'll want to drop the `cloak/`, so we'll do that using the below code:
+
+```php
+# Placeholder Variables
+$userId = 100;
+$errors = [];
+
+$request_uri_override = $_SERVER['REQUEST_URI'];
+$request_uri_override = explode('cloak/', $request_uri_override);
+$_SERVER['REQUEST_URI'] = $request_uri_override[0];
+
+$cloak = CloakPlus_Cloak($userId, ['skip_master_check']);
+if (!$cloak['state']) {
+    $errors[] = $cloak['error'] ?? 'There was an error processing your request';
+}
+```
+
+If you simply want to strip out regular URL parameters, eg. `?cloak=1`, we'll do this:
+
+```php
+# Placeholder Variables
+$userId = 100;
+$errors = [];
+
+$request_uri_override = $_SERVER['REQUEST_URI'];
+$request_uri_override = explode('?', $request_uri_override);
+$_SERVER['REQUEST_URI'] = $request_uri_override[0];
+
+$cloak = CloakPlus_Cloak($userId, ['skip_master_check']);
+if (!$cloak['state']) {
+    $errors[] = $cloak['error'] ?? 'There was an error processing your request';
+}
+```
+
+Note, anything else that depends on `REQUEST_URI` before the user is redirected into the cloaked session will be using this new URI that you set. This is the only way to handle a modified redirection at the time of writing, however.
+
 ## Questions or Issues
 
 If you have any issues please open an issue here on GitHub. This includes feature requests. If you wish to resolve an issue, you may complete a pull request. Please do not make a pull request for features without opening an issue first.
