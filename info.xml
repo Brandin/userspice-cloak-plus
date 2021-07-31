@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>Cloak+</name>
+  <author>Brandin Arsenault</author>
+  <website>https://github.com/Brandin/userspice-cloak-plus</website>
+  <version>1.0.0</version>
+  <release>July 30, 2021</release>
+  <tested>5.3.4</tested>
+  <description>This plugin improves the built in cloaking for UserSpice by adding a helper function to cloak with a number of options, and a logout hook to use this as a secondary method of returning to the original user.</description>
+  <button></button>
+</plugin>
