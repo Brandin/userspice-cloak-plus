@@ -34,15 +34,16 @@ UserSpice can be downloaded from their [website](https://userspice.com/) or on [
 
 The `CloakPlus_Cloak` function will return a `state` which can be accessed through the `array`, and in the event the `state` is `false`, it likely will return an `error` as well. If cloaking is successful, the plugin will redirect the user automatically to the homepage. If you disable this, it will return a `state` of `true`. The `state` will always be a `boolean`.
 
-| Behavior | Override | Error |
-| Check if there is a user logged in | _None_ | `not_logged_in` |
-| Check if the provided `cloakTo` variable is an `int` (or can be converted) and is a valid User ID | _None_ | `cloakee_invalid` |
-| Checks if the provided `cloakTo` variable is the same as the cloaker's ID | _None_ | `cloakee_is_self` |
-| Check if the cloaker is in the [Master Account Array](https://userspice.com/master-account/) | `skip_master_check` | `cloaker_not_in_master_array` |
-| Check if the cloakee (person being cloaked to) is _not_ in the [Master Account Array](https://userspice.com/master-account/) | `allow_master_cloaking` | `cloakee_in_master_array` |
-| Store URI that the user cloaked from, to redirect them back to after | `do_not_store_original_dest` | _None_ |
-| Logging out triggers uncloaking | `disable_logout_uncloak` | _None_ |
-| Auto redirect on cloaking | `no_redirect_on_success` | _None_ |
+| Behavior                                                                                                                     | Override                     | Error                         |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------- |
+| Check if there is a user logged in                                                                                           | _None_                       | `not_logged_in`               |
+| Check if the provided `cloakTo` variable is an `int` (or can be converted) and is a valid User ID                            | _None_                       | `cloakee_invalid`             |
+| Checks if the provided `cloakTo` variable is the same as the cloaker's ID                                                    | _None_                       | `cloakee_is_self`             |
+| Check if the cloaker is in the [Master Account Array](https://userspice.com/master-account/)                                 | `skip_master_check`          | `cloaker_not_in_master_array` |
+| Check if the cloakee (person being cloaked to) is _not_ in the [Master Account Array](https://userspice.com/master-account/) | `allow_master_cloaking`      | `cloakee_in_master_array`     |
+| Store URI that the user cloaked from, to redirect them back to after                                                         | `do_not_store_original_dest` | _None_                        |
+| Logging out triggers uncloaking                                                                                              | `disable_logout_uncloak`     | _None_                        |
+| Auto redirect on cloaking                                                                                                    | `no_redirect_on_success`     | _None_                        |
 
 ### Basic Usage
 
